@@ -1,0 +1,12 @@
+#服务器配置
+server:
+  log-path: ./logs
+  mappings:
+    - host: zentao.dev-ipower.top
+      target: 192.168.0.103:1580
+#日志级别
+logging:
+  level:
+    root: INFO
+    io.netty: WARN
+    top.zenyoung.proxy: DEBUG

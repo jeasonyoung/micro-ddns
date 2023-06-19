@@ -1,0 +1,11 @@
+#服务器配置
+server:
+  log-path: ./logs
+  mappings:
+    - host: '*'
+#日志级别
+logging:
+  level:
+    root: INFO
+    io.netty: DEBUG
+    top.zenyoung.proxy: DEBUG

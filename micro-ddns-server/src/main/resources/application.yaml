@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: ddns-server
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: NON_NULL
+  profiles:
+    active: @profiles.active@
+
+top:
+  zenyoung:
+    netty:
+      server:
+        log-level: debug
+        heartbeat-interval: PT60S
+        codec:
+          #DDNS服务端端口
+          5610:
+            inside-codec: insideServerCodec
+          #对外服务端口
+          6510:
+            outside-codec: outsideServerCodec

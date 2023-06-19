@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>micro-ddns-client</artifactId>
+    <name>ddns::公共::客户端</name>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <parent>
+        <groupId>top.zenyoung</groupId>
+        <artifactId>micro-ddns</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <dependencies>
+        <!-- 模块 -->
+        <dependency>
+            <groupId>top.zenyoung</groupId>
+            <artifactId>micro-ddns-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!-- 框架 -->
+        <dependency>
+            <groupId>top.zenyoung</groupId>
+            <artifactId>netty-client</artifactId>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <!-- 开发环境 -->
+        <profile>
+            <id>dev</id>
+            <properties>
+                <profiles.active>dev</profiles.active>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <!-- 发布环境 -->
+        <profile>
+            <id>prod</id>
+            <properties>
+                <profiles.active>prod</profiles.active>
+            </properties>
+            <build>
+                <finalName>${project.artifactId}-${project.version}-prod</finalName>
+                <plugins>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                    </plugin>
+<!--                    <plugin>-->
+<!--                        <groupId>com.spotify</groupId>-->
+<!--                        <artifactId>dockerfile-maven-plugin</artifactId>-->
+<!--                        <executions>-->
+<!--                            <execution>-->
+<!--                                <id>default</id>-->
+<!--                                <goals>-->
+<!--                                    <goal>build</goal>-->
+<!--                                </goals>-->
+<!--                            </execution>-->
+<!--                        </executions>-->
+<!--                        <configuration>-->
+<!--                            <repository>${project.artifactId}</repository>-->
+<!--                            <tag>${project.version}</tag>-->
+<!--                            <buildArgs>-->
+<!--                                <JAR_FILE>${project.artifactId}-${project.version}.jar</JAR_FILE>-->
+<!--                            </buildArgs>-->
+<!--                        </configuration>-->
+<!--                    </plugin>-->
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+</project>

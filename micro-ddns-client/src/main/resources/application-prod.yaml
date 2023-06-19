@@ -1,0 +1,17 @@
+#客户端配置
+client:
+  log-path: ./logs
+top:
+  zenyoung:
+    netty:
+      client:
+        host: x.x.x.x
+        port: 5610
+        log-level: debug
+        heartbeat-interval: PT10S
+#日志级别
+logging:
+  level:
+    root: INFO
+    io.netty: WARN
+    top.zenyoung.proxy: DEBUG
